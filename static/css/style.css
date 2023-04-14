@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'high-speed';
+  src: url("High Speed.ttf");
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: /* 'high-speed', */ monospace;
+}
+
+p {
+  font-family: monospace;
+}
+
+.btn {
+  font-family: 'high-speed', monospace;
+}
+.navbar{
+  font-family: 'high-speed', monospace;
+}
+
+.nav-link{
+  font-size: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  #sobre_nosotros_texto{
+    padding-top: 50px;
+  } 
+}
+
+
