@@ -18,7 +18,7 @@ DEBUG = os.environ.get('DEBUG')
 
 # ALLOWED_HOSTS = ['www.csgaragezte.com', 'csgarage.com', '*']
 
-ALLOWED_HOSTS = ['191.101.70.195', '*']
+ALLOWED_HOSTS = ['195.35.16.20']
 
 CSRF_TRUSTED_ORIGINS = ['https://www.csgaragezte.com']
 
