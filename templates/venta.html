@@ -72,26 +72,32 @@
       </div>
     <div class="container" style="padding-top: 20px; padding-bottom: 0px;padding-left: 50px;">
         {% for auto in autos %}
-        {% if forloop.first %}<div class="row car_row">{% endif %}
-            <div class="col-lg-4 d-flex align-items-stretch card_border">
-                <div class="card" style="width: 18rem;display: flex; flex-direction: column;">
-                    <img src="{{ auto.image.url }}" class="card-img-top img-fit" alt="...">
-                    <div class="card-body">
-                        <h3 class="card-title">{{ auto.marca }} {{ auto.modelo }} {{ auto.anio }}</h3>
-                        <h6>{{ auto.kilometros }}km</h6>
-                        <p class="card-text">{{ auto.descripcion }}</p>
-                        {% if auto.disponible == True %}
-                            <p><strong>Precio: U$S</strong> {{ auto.precio }}</p>
-                            <a href="https://wa.me/5493487239061" target="_blank" class="align-self-end btn btn-lg btn-block btn-primary" style="margin-top: auto;">Contactarse</a>
-                        {% else %}
-                            <a href="#" class="align-self-end btn btn-lg btn-block btn-primary" style="margin-top: auto; background-color: red;">No disponible</a>
-                        {% endif %}
+            {% if forloop.first %}<div class="row car_row">{% endif %}
+                <div class="col-lg-4 d-flex align-items-stretch card_border">
+                    <div class="card" style="width: 18rem;display: flex; flex-direction: column;">
+                        <img src="{{ auto.image.url }}" class="card-img-top img-fit" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ auto.marca }} {{ auto.modelo }} {{ auto.anio }}</h3>
+                            <h6>{{ auto.kilometros }}km</h6>
+                            <p class="card-text">{{ auto.descripcion }}</p>
+                            {% if auto.disponible %}
+                                {% if auto.precio == 0 %}
+                                    <p><strong>Precio: Consultar</strong></p>
+                                {% else %}
+                                    <p><strong>Precio: U$S {{ auto.precio }}</strong></p>
+                                {% endif %}
+                                <a href="https://wa.me/5493487239061" target="_blank" class="align-self-end btn btn-lg btn-block btn-primary" style="margin-top: auto;">Contactarse</a>
+                            {% else %}
+                                <a href="#" class="align-self-end btn btn-lg btn-block btn-primary" style="margin-top: auto; background-color: red;">No disponible</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% if forloop.counter|divisibleby:3 %}</div><div class="row row_mobile">{% endif %}
-        {% if forloop.last %}</div>{% endif %}
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}</div><div class="row car_row">{% endif %}
+                {% if forloop.last %}</div>{% endif %}
+            {% if forloop.last and not forloop.counter|divisibleby:3 %}</div>{% endif %}
         {% endfor %}
+
     </div>
     <hr style="margin-top: 0px;">
     <div class="container">
